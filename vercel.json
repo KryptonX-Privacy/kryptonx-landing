@@ -1,4 +1,9 @@
 {
   "buildCommand": "pnpm build",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "build": {
+    "env": {
+      "NODE_VERSION": "24"
+    }
+  }
 }
