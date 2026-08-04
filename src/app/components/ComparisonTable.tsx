@@ -4,7 +4,7 @@ import { useState } from 'react';
 interface ComparisonFeature {
   name: string;
   icon: any;
-  zkprivacy: boolean | string;
+  kryptonx: boolean | string;
   traditional: boolean | string;
   description: string;
 }
@@ -16,74 +16,74 @@ export function ComparisonTable() {
     {
       name: 'Complete Privacy',
       icon: Shield,
-      zkprivacy: true,
+      kryptonx: true,
       traditional: false,
       description: 'Transaction details completely hidden from public view'
     },
     {
       name: 'Transaction Speed',
       icon: Zap,
-      zkprivacy: '< 1 second',
+      kryptonx: '< 1 second',
       traditional: '5-30 seconds',
       description: 'Average time to confirm transactions'
     },
     {
       name: 'Network Fees',
       icon: DollarSign,
-      zkprivacy: '$0.001',
+      kryptonx: '$0.001',
       traditional: '$0.50 - $5.00',
       description: 'Average cost per transaction'
     },
     {
       name: 'Sender Anonymity',
       icon: Eye,
-      zkprivacy: true,
+      kryptonx: true,
       traditional: false,
       description: 'Sender identity protected by zero-knowledge proofs'
     },
     {
       name: 'Receiver Anonymity',
       icon: Lock,
-      zkprivacy: true,
+      kryptonx: true,
       traditional: false,
       description: 'Receiver identity hidden from blockchain explorers'
     },
     {
       name: 'Amount Hidden',
       icon: Shield,
-      zkprivacy: true,
+      kryptonx: true,
       traditional: false,
       description: 'Transaction amounts encrypted and private'
     },
     {
       name: 'Regulatory Compliant',
       icon: Globe,
-      zkprivacy: true,
+      kryptonx: true,
       traditional: true,
       description: 'Optional selective disclosure for compliance'
     },
     {
       name: 'Proof Generation',
       icon: Clock,
-      zkprivacy: '< 500ms',
+      kryptonx: '< 500ms',
       traditional: 'N/A',
       description: 'Time to generate zero-knowledge proof'
     },
     {
       name: 'Scalability',
       icon: TrendingUp,
-      zkprivacy: '10,000+ TPS',
+      kryptonx: '10,000+ TPS',
       traditional: '2,000 TPS',
       description: 'Transactions per second capacity'
     }
   ];
 
-  const renderCell = (value: boolean | string, isZKPrivacy: boolean) => {
+  const renderCell = (value: boolean | string, isKryptonX: boolean) => {
     if (typeof value === 'boolean') {
       return value ? (
         <div className="flex items-center justify-center">
-          <div className={`${isZKPrivacy ? 'bg-green-500/20' : 'bg-green-500/10'} p-2 rounded-lg`}>
-            <Check className={`w-6 h-6 ${isZKPrivacy ? 'text-green-400' : 'text-green-500'}`} />
+          <div className={`${isKryptonX ? 'bg-green-500/20' : 'bg-green-500/10'} p-2 rounded-lg`}>
+            <Check className={`w-6 h-6 ${isKryptonX ? 'text-green-400' : 'text-green-500'}`} />
           </div>
         </div>
       ) : (
@@ -97,7 +97,7 @@ export function ComparisonTable() {
     
     return (
       <div className="text-center">
-        <span className={`${isZKPrivacy ? 'text-cyan-400' : 'text-gray-400'} font-semibold text-lg`}>
+        <span className={`${isKryptonX ? 'text-cyan-400' : 'text-gray-400'} font-semibold text-lg`}>
           {value}
         </span>
       </div>
@@ -108,10 +108,10 @@ export function ComparisonTable() {
     <div className="w-full">
       <div className="text-center mb-12">
         <h2 className="text-white text-4xl sm:text-5xl mb-4">
-          Why Choose <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">ZKPrivacy</span>?
+          Why Choose <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">KryptonX</span>?
         </h2>
         <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-          See how ZKPrivacy outperforms traditional cryptocurrencies in privacy, speed, and cost
+          See how KryptonX outperforms traditional cryptocurrencies in privacy, speed, and cost
         </p>
       </div>
 
@@ -127,7 +127,7 @@ export function ComparisonTable() {
                 <th className="p-6 text-center">
                   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 px-6 py-3 rounded-xl">
                     <Shield className="w-5 h-5 text-white" />
-                    <span className="text-white font-semibold">ZKPrivacy</span>
+                    <span className="text-white font-semibold">KryptonX</span>
                   </div>
                 </th>
                 <th className="p-6 text-center text-gray-400 font-semibold">
@@ -165,7 +165,7 @@ export function ComparisonTable() {
                       </div>
                     </td>
                     <td className="p-6">
-                      {renderCell(feature.zkprivacy, true)}
+                      {renderCell(feature.kryptonx, true)}
                     </td>
                     <td className="p-6">
                       {renderCell(feature.traditional, false)}
@@ -196,8 +196,8 @@ export function ComparisonTable() {
               <p className="text-gray-400 text-sm mb-4">{feature.description}</p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-slate-900/50 rounded-xl p-4 border border-cyan-500/30">
-                  <div className="text-cyan-400 text-xs mb-2 uppercase font-semibold">ZKPrivacy</div>
-                  {renderCell(feature.zkprivacy, true)}
+                  <div className="text-cyan-400 text-xs mb-2 uppercase font-semibold">KryptonX</div>
+                  {renderCell(feature.kryptonx, true)}
                 </div>
                 <div className="bg-slate-900/50 rounded-xl p-4 border border-gray-500/30">
                   <div className="text-gray-400 text-xs mb-2 uppercase font-semibold">Traditional</div>

@@ -31,7 +31,7 @@ export function Documentation() {
     {
       category: 'GETTING STARTED',
       items: [
-        { id: 'what-is-zk', label: 'What is ZK Privacy?', icon: Shield },
+        { id: 'what-is-zk', label: 'What is KryptonX?', icon: Shield },
         { id: 'privacy-model', label: 'Privacy & Security Model', icon: Lock },
         { id: 'wallet-setup', label: 'Wallet Setup', icon: Wallet },
         { id: 'technology', label: 'Technology Stack', icon: Cpu }
@@ -292,7 +292,7 @@ export function Documentation() {
       case 'what-is-zk':
         return (
           <div>
-            <h1 className="text-white text-4xl sm:text-5xl mb-4">What is ZK Privacy?</h1>
+            <h1 className="text-white text-4xl sm:text-5xl mb-4">What is KryptonX?</h1>
             <p className="text-gray-400 text-lg mb-12">
               Understanding Zero-Knowledge proofs and privacy technology
             </p>
