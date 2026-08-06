@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Boxes } from 'lucide-react';
 
 interface NavItemProps {
   name: string;
@@ -8,10 +9,14 @@ interface NavItemProps {
 }
 
 export function AnimatedNavItem({ name, href, onClick, index }: NavItemProps) {
+  const isExternal = href.startsWith('http');
+
   return (
     <motion.a
       href={href}
       onClick={onClick}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
       className="relative text-gray-300 transition-all duration-300 group cursor-pointer font-medium"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -62,6 +67,75 @@ export function AnimatedNavItem({ name, href, onClick, index }: NavItemProps) {
             repeat: Infinity,
             ease: 'easeInOut'
           }
+        }}
+      />
+    </motion.a>
+  );
+}
+
+interface Animated3DCircuitButtonProps {
+  index: number;
+  href: string;
+}
+
+export function Animated3DCircuitButton({ index, href }: Animated3DCircuitButtonProps) {
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative flex items-center gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 text-white px-5 py-2 rounded-lg font-medium overflow-hidden shadow-lg shadow-purple-500/20 cursor-pointer"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1]
+      }}
+      whileHover={{
+        scale: 1.05,
+        boxShadow: '0 10px 40px rgba(168, 85, 247, 0.45)'
+      }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <motion.span
+        className="relative z-10 flex items-center gap-2"
+        animate={{ rotate: [0, 0] }}
+      >
+        <Boxes className="w-4 h-4" />
+        3D Circuit
+      </motion.span>
+
+      {/* Animated gradient overlay */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* Shimmer effect */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+        initial={{ x: '-100%' }}
+        animate={{ x: ['-100%', '200%'] }}
+        transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5, ease: 'easeInOut' }}
+      />
+
+      {/* Glow pulse */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{
+          boxShadow: [
+            '0 0 20px rgba(168, 85, 247, 0.3)',
+            '0 0 40px rgba(34, 211, 238, 0.6)',
+            '0 0 20px rgba(168, 85, 247, 0.3)'
+          ]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: 'easeInOut'
         }}
       />
     </motion.a>

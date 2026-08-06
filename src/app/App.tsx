@@ -1,11 +1,13 @@
-import { Shield, Lock, Eye, ArrowRight, Github, Send, Menu, X, Zap, Globe, Cpu, FileKey, Users, Code, Database, Network, Server, Blocks, Key, Check, Clock, Sparkles, Rocket, MessageCircle, Loader, Loader2, DollarSign, TrendingUp } from 'lucide-react';
+import { Shield, Lock, Eye, ArrowRight, Github, Send, Menu, X, Zap, Globe, Cpu, FileKey, Users, Code, Database, Network, Server, Blocks, Key, Check, Clock, Sparkles, Rocket, MessageCircle, Loader, Loader2, DollarSign, TrendingUp, Boxes } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrivacyBuilder } from './components/PrivacyBuilder';
 import { PrivacyDock } from './components/PrivacyDock';
 import { InteractivePhoneMockup } from './components/InteractivePhoneMockup';
-import { AnimatedNavItem, AnimatedLaunchButton } from './components/AnimatedNavigation';
+import { AnimatedNavItem, AnimatedLaunchButton, Animated3DCircuitButton } from './components/AnimatedNavigation';
+
+const CIRCUIT_3D_URL = 'https://circuit.kryptonx.xyz/';
 import { FloatingParticles } from './components/FloatingParticles';
 import { AnimatedGradientText } from './components/AnimatedGradientText';
 import { GlowingCard } from './components/GlowingCard';
@@ -63,9 +65,15 @@ function Navigation({ currentPage, setCurrentPage }: { currentPage: PageView; se
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setIsMenuOpen(false);
-    
+
+    // External links open in a new tab
+    if (href.startsWith('http')) {
+      return;
+    }
+
+    e.preventDefault();
+
     // Check if it's Builder or Dock
     if (href === '#builder') {
       setCurrentPage('builder');
@@ -150,6 +158,7 @@ function Navigation({ currentPage, setCurrentPage }: { currentPage: PageView; se
                 index={index}
               />
             ))}
+            <Animated3DCircuitButton index={navItems.length} href={CIRCUIT_3D_URL} />
             <AnimatedLaunchButton index={navItems.length + 1} onClick={handleTryDemo} />
           </div>
 
@@ -165,15 +174,27 @@ function Navigation({ currentPage, setCurrentPage }: { currentPage: PageView; se
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
+                target={item.href.startsWith('http') ? '_blank' : undefined}
+                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className="block text-gray-300 hover:text-emerald-400 hover:translate-x-2 py-2 transition-all duration-300 hover:bg-emerald-500/5 rounded-lg px-4"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 {item.name}
               </a>
             ))}
+            <a
+              href={CIRCUIT_3D_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white px-6 py-2 rounded-lg mt-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30"
+            >
+              <Boxes className="w-4 h-4" />
+              3D Circuit
+            </a>
             <button
               onClick={handleTryDemo}
-              className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-6 py-2 rounded-lg mt-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30"
+              className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-6 py-2 rounded-lg mt-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30"
             >
               Try Demo
             </button>

@@ -3,7 +3,7 @@ import { Shield, Lock, Eye, ArrowRight, Send, Key, Check, Zap } from 'lucide-rea
 
 export function PrivacyBuilder() {
   const handle3DCircuit = () => {
-    window.open('https://circuit.kryptonx.com/', '_blank', 'noopener,noreferrer');
+    window.open('https://circuit.kryptonx.xyz/', '_blank', 'noopener,noreferrer');
   };
 
   return (
